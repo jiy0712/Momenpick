@@ -1,0 +1,175 @@
+.PictureSize2-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.PictureSize2-Picture-background {
+    background-image: url('/public/images/PictureBg.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 210px;
+    position: relative;
+}
+
+/* 배경을 어둡게 하는 오버레이 */
+.PictureSize2-dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+/* 모달 스타일 */
+.PictureSize2-modal {
+    width: 456px;
+    height: 206px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 101;
+}
+
+.PictureSize2-picIcon {
+    width: 41px;
+    height: 37px;
+}
+
+.PictureSize2-text1 {
+    font-family: 'Paperlogy-7Bold';
+    font-size: 43px;
+    color: #47322F;
+    margin: 20px 0;
+}
+
+.PictureSize2-text2 {
+    font-family: 'Paperlogy-4Regular';
+    font-size: 28px;
+    color: #555555;
+    margin: 10px 0;
+}
+
+.PictureSize2-text3 {
+    font-family: 'Paperlogy-7Bold';
+    font-size: 28px;
+    color: #DB4848;
+}
+
+.PictureSize2-photoZone {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.PictureSize2-Photo-countdown {
+    font-family: 'Paperlogy-7Bold';
+    font-size: 43px;
+    color: #fff;
+    margin: 20px 0;
+    z-index: 10;
+}
+
+.PictureSize2-photo {
+    width: 564px;
+    height: 771px;
+    object-fit: cover;
+    z-index: 1;
+    position: relative;
+}
+
+.PictureSize2-teacherPose {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 564px;
+    height: 841px;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* ResultZone - 캡처될 영역 */
+.PictureSize2-resultZone {
+    width: 590px;
+    height: 879px;
+    position: relative;
+    overflow: hidden;
+    /* 캡처를 위한 중요한 속성들 */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* 추가: 비율 유지를 위한 속성 */
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+/* 프레임 이미지 */
+.PictureSize2-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 20;
+}
+
+/* 첫 번째 사진 (왼쪽 위) */
+.PictureSize2-photo1 {
+    position: absolute;
+    width: 267px;
+    height: 369px;
+    object-fit: cover;
+    top: 45px;
+    left: 23px;
+    z-index: 5;
+}
+
+/* 두 번째 사진 (오른쪽 위) */
+.PictureSize2-photo2 {
+    position: absolute;
+    width: 269px;
+    height: 369px;
+    object-fit: cover;
+    top: 45px;
+    left: 300px;
+    z-index: 5;
+}
+
+/* 세 번째 사진 (왼쪽 아래) */
+.PictureSize2-photo3 {
+    position: absolute;
+    width: 269px;
+    height: 369px;
+    object-fit: cover;
+    top: 465px;
+    left: 23px;
+    z-index: 5;
+}
+
+/* 네 번째 사진 (오른쪽 아래) */
+.PictureSize2-photo4 {
+    position: absolute;
+    width: 269px;
+    height: 369px;
+    object-fit: cover;
+    top: 465px;
+    left: 300px;
+    z-index: 5;
+}

@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.302c7e18.css",
+    "main.js": "/static/js/main.128189ee.js",
+    "static/media/galleryBg.png": "/static/media/galleryBg.81a90b7ef5e4df04f456.png",
+    "static/media/NotoSerifKR-Bold.otf": "/static/media/NotoSerifKR-Bold.ae766132c89c70bca757.otf",
+    "static/media/NotoSerifKR-Light.otf": "/static/media/NotoSerifKR-Light.c395882f89087af2e4a2.otf",
+    "static/media/kindChoiceBg.png": "/static/media/kindChoiceBg.1c5e5e16f94283ccd3f4.png",
+    "static/media/sizeChoiceBg.png": "/static/media/sizeChoiceBg.1e31c1580a15fa50b52e.png",
+    "static/media/finishBg.png": "/static/media/finishBg.52cc52505122683d5dac.png",
+    "static/media/mainBg.png": "/static/media/mainBg.0881ecf106900ff258bd.png",
+    "static/media/Paperlogy-4Regular.otf": "/static/media/Paperlogy-4Regular.b3f3846711b1acd21a0a.otf",
+    "static/media/Paperlogy-6SemiBold.otf": "/static/media/Paperlogy-6SemiBold.7c3fa250c543978f54b2.otf",
+    "static/media/Paperlogy-7Bold.otf": "/static/media/Paperlogy-7Bold.f77f2acdd4550d7fb5e4.otf",
+    "static/media/Paperlogy-5Medium.otf": "/static/media/Paperlogy-5Medium.28533d20023e85cbf5b5.otf",
+    "static/media/emailBg.png": "/static/media/emailBg.780c69ab9776a5aba1fc.png",
+    "static/media/PictureBg.png": "/static/media/PictureBg.967b25edd0b8102687bc.png",
+    "index.html": "/index.html",
+    "main.302c7e18.css.map": "/static/css/main.302c7e18.css.map",
+    "main.128189ee.js.map": "/static/js/main.128189ee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.302c7e18.css",
+    "static/js/main.128189ee.js"
+  ]
+}

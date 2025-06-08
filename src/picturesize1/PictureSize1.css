@@ -1,0 +1,135 @@
+.PictureSize1-Picture-background {
+    background-image: url('/public/images/PictureBg.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.PictureSize1-Picture-background img {
+    position: absolute;
+}
+/* 배경을 어둡게 하는 오버레이 */
+.PictureSize1-dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);  /* 어두운 반투명 배경 */
+    z-index: 100;  /* 모달보다 아래 */
+}
+
+/* 모달 스타일 */
+.PictureSize1-modal {
+    width: 456px;
+    height: 206px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 101;  /* 배경보다 위에 위치 */
+}
+
+.PictureSize1-picIcon {
+    width: 41px;
+    height: 37px;
+}
+
+.PictureSize1-text1 {
+    font-family: 'Paperlogy-7Bold';
+    font-size: 43px;
+    color: #47322F;
+}
+
+.PictureSize1-text2 {
+    font-family: 'Paperlogy-4Regular';
+    font-size: 28px;
+    color: #555555;
+}
+
+.PictureSize1-text3 {
+    font-family: 'Paperlogy-7Bold';
+    font-size: 28px;
+    color: #DB4848;
+}
+
+.PictureSize1-photoZone {
+    width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.PictureSize1-Photo-countdown {
+    font-family: 'Paperlogy-7Bold';
+    font-size: 43px;
+    color: #fff;
+}
+
+.PictureSize1-photo {
+    width: 1049px;
+    height: 781px;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.PictureSize1-teacherPose {
+    position: absolute;
+    top: 140px;
+    width: 1049px;
+    height: 781px;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* 첫 번째 사진 (왼쪽 위) */
+.PictureSize1-photo1 {
+    width: 249px;
+    height: 188px;
+    object-fit: cover;
+    top: 151px;
+    right: 243px;
+}
+
+/* 두 번째 사진 (오른쪽 위) */
+.PictureSize1-photo2 {
+    width: 249px;
+    height: 188px;
+    object-fit: cover;
+    top: 346px;
+    right: 243px;
+}
+
+/* 세 번째 사진 (왼쪽 아래) */
+.PictureSize1-photo3 {
+    width: 249px;
+    height: 188px;
+    object-fit: cover;
+    top: 542px;
+    right: 243px;
+}
+
+/* 네 번째 사진 (오른쪽 아래) */
+.PictureSize1-photo4 {
+    width: 249px;
+    height: 188px;
+    object-fit: cover;
+    top: 737px;
+    right: 243px;
+}
+
+.PictureSize1-frame {
+    width: 295px;
+    height: 880px;
+    top: 100px;
+    right: 220px;
+    z-index: 10;  /* 프레임을 더 앞으로 배치 */
+}
+

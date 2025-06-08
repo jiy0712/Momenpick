@@ -1,0 +1,26 @@
+.selectFrameTeacher-background {
+    background-image: url('/public/images/kindChoiceBg.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 수직 가운데 정렬 */
+    align-items: center;     /* 수평 가운데 정렬 */
+    position: relative; /* 헤더 위치 조정을 위해 필요 */
+}
+
+.select-header {
+    position: absolute;
+    top: 20px; /* 원하는 만큼 내려서 조절 */
+    left: 20px;
+}
+
+.select-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}

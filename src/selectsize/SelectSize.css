@@ -1,0 +1,53 @@
+.selectSize-background {
+    background-image: url('/public/images/sizeChoiceBg.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.select-header {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    width: 99.2%;
+    margin-bottom: 100px;
+}
+  
+.backBtn {
+    font-family: "NotoSerifKR-Bold";
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 34px;
+    position: absolute;
+    left: 50px;
+}
+
+#title {
+    font-family: "Paperlogy-7Bold";
+    font-size: 45px;
+    color: white;
+}
+
+.countdown-timer {
+    font-size: 45px;
+    font-family: "Paperlogy-6SemiBold";
+    color: #FFE852;
+    position: absolute;
+    right: 100px;
+}
+
+.select-body {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}

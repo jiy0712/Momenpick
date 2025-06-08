@@ -1,0 +1,45 @@
+.finish-background {
+    background-image: url('/public/images/finishBg.png'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+  
+.finish-background img {
+    position: absolute;
+}
+
+.finish-header{
+    text-align: center;
+    color: #fff;
+    padding-top: 100px;
+}
+
+.fin1 {
+    font-family: 'NotoSerifKR-Light';
+    font-size: 35px;
+}
+
+.fin2 {
+    font-family: 'Paperlogy-7Bold';
+    font-size: 60px;
+}
+
+.finishPhoto {
+    top: 533px;
+}
+
+.finish-timer {
+    position: absolute;
+    bottom: 70px;
+    right: 80px;
+    font-size: 20px;
+    font-family: "Paperlogy-4Regular";
+    color: #fff;
+}

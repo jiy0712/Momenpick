@@ -1,0 +1,26 @@
+.selectFrame-background {
+    background-image: url('/public/images/kindChoiceBg.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-row {
+    display: flex;
+    gap: 2rem
+}
+
+.right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
