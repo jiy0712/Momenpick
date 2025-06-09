@@ -1,2 +1,4 @@
 node_modules/
 *.local
+src/firebase.json
+.env
