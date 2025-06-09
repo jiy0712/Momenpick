@@ -1,14 +1,23 @@
+.PictureSize1-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
 .PictureSize1-Picture-background {
     background-image: url('/public/images/PictureBg.png');
     background-size: cover;
     background-position: center;
     width: 100%;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 180px;
+    position: relative;
 }
 
-.PictureSize1-Picture-background img {
-    position: absolute;
-}
 /* 배경을 어둡게 하는 오버레이 */
 .PictureSize1-dark-overlay {
     position: fixed;
@@ -16,8 +25,8 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);  /* 어두운 반투명 배경 */
-    z-index: 100;  /* 모달보다 아래 */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
 }
 
 /* 모달 스타일 */
@@ -33,7 +42,7 @@
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 101;  /* 배경보다 위에 위치 */
+    z-index: 101;
 }
 
 .PictureSize1-picIcon {
@@ -45,12 +54,14 @@
     font-family: 'Paperlogy-7Bold';
     font-size: 43px;
     color: #47322F;
+    margin: 20px 0;
 }
 
 .PictureSize1-text2 {
     font-family: 'Paperlogy-4Regular';
     font-size: 28px;
     color: #555555;
+    margin: 10px 0;
 }
 
 .PictureSize1-text3 {
@@ -60,76 +71,108 @@
 }
 
 .PictureSize1-photoZone {
-    width: 1400px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    position: relative;
 }
 
 .PictureSize1-Photo-countdown {
     font-family: 'Paperlogy-7Bold';
     font-size: 43px;
     color: #fff;
+    margin: 20px 0;
+    z-index: 10;
 }
 
 .PictureSize1-photo {
     width: 1049px;
-    height: 781px;
+    height: 788px;
     object-fit: cover;
     z-index: 1;
+    position: relative;
+}
+
+.teacher1-special {
+    left: 53% !important;
+    transform: translateX(-50%);
 }
 
 .PictureSize1-teacherPose {
     position: absolute;
-    top: 140px;
-    width: 1049px;
-    height: 781px;
+    top: 47px;
+    left: 47%;
+    transform: translateX(-50%);
     object-fit: contain;
     z-index: 2;
     pointer-events: none;
 }
 
+/* ResultZone - 캡처될 영역 */
+.PictureSize1-resultZone {
+    width: 295px;
+    height: 881px;
+    position: relative;
+    overflow: hidden;
+    /* 캡처를 위한 중요한 속성들 */
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    /* 추가: 비율 유지를 위한 속성 */
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+/* 프레임 이미지 */
+.PictureSize1-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 20;
+}
+
 /* 첫 번째 사진 (왼쪽 위) */
 .PictureSize1-photo1 {
+    position: absolute;
     width: 249px;
-    height: 188px;
+    height: 187px;
     object-fit: cover;
-    top: 151px;
-    right: 243px;
+    top: 55px;
+    left: 23px;
+    z-index: 5;
 }
 
 /* 두 번째 사진 (오른쪽 위) */
 .PictureSize1-photo2 {
+    position: absolute;
     width: 249px;
-    height: 188px;
+    height: 187px;
     object-fit: cover;
-    top: 346px;
-    right: 243px;
+    top: 250px;
+    left: 23px;
+    z-index: 5;
 }
 
 /* 세 번째 사진 (왼쪽 아래) */
 .PictureSize1-photo3 {
+    position: absolute;
     width: 249px;
-    height: 188px;
+    height: 187px;
     object-fit: cover;
-    top: 542px;
-    right: 243px;
+    top: 445px;
+    left: 23px;
+    z-index: 5;
 }
 
 /* 네 번째 사진 (오른쪽 아래) */
 .PictureSize1-photo4 {
+    position: absolute;
     width: 249px;
-    height: 188px;
+    height: 187px;
     object-fit: cover;
-    top: 737px;
-    right: 243px;
+    top: 640px;
+    left: 23px;
+    z-index: 5;
 }
-
-.PictureSize1-frame {
-    width: 295px;
-    height: 880px;
-    top: 100px;
-    right: 220px;
-    z-index: 10;  /* 프레임을 더 앞으로 배치 */
-}
-

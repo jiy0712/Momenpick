@@ -1,7 +1,18 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { getStorage, ref, listAll, getBlob, uploadBytes } from "firebase/storage";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
+import {
+  getStorage,
+  ref,
+  listAll,
+  getBlob,
+  uploadBytes,
+} from "firebase/storage";
 import { db, storage } from "../firebase";
 import "./Email.css";
 
@@ -10,6 +21,8 @@ const Email = () => {
   const [error, setError] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { previewImageUrl, frameSize } = location.state || {};
 
   const handleChecked = () => {
     setIsChecked(!isChecked);
@@ -19,7 +32,8 @@ const Email = () => {
     const value = e.target.value;
     setEmail(value);
 
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailRegex =
+      /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(value)) {
       setError("유효한 이메일 주소가 아닙니다");
     } else {
@@ -52,16 +66,13 @@ const Email = () => {
           return;
         }
 
-        const sortedItems = listResult.items.sort((a, b) => {
-          return a.name.localeCompare(b.name);
-        });
-
+        const sortedItems = listResult.items.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
         const latestImageRef = sortedItems[sortedItems.length - 1];
         const blob = await getBlob(latestImageRef);
-
         const galleryRef = ref(storage, `gallery/${latestImageRef.name}`);
         await uploadBytes(galleryRef, blob);
-
         console.log("갤러리에 사진 복사 완료");
       }
 
@@ -73,7 +84,12 @@ const Email = () => {
   };
 
   return (
-    <div className="Email-background">
+    <div className="Email-container">
+      <div className={`preview-container ${frameSize === 'size1' ? 'picture-size1' : 'picture-size2'}`}>
+        {previewImageUrl && (
+          <img src={previewImageUrl} alt="미리보기" className="picture-preview" />
+        )}
+      </div>
       <div className="Email-write">
         <div className="write-header">사진을 보내드릴 이메일을 작성해주세요</div>
         <div className="input-container">
@@ -95,7 +111,9 @@ const Email = () => {
           />
           갤러리에 전시하기
         </label>
-        <button className="checkBtn" onClick={handleSubmit}>확인</button>
+        <button className="checkBtn" onClick={handleSubmit}>
+          확인
+        </button>
       </div>
     </div>
   );

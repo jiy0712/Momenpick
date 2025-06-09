@@ -54,101 +54,105 @@ useEffect(() => {
     setCapturedImageUrls(urls);
 
     return () => {
-    urls.forEach((url) => URL.revokeObjectURL(url));
+      urls.forEach((url) => URL.revokeObjectURL(url));
     };
-}, [capturedImages]);
+  }, [capturedImages]);
 
-const takePhoto = useCallback(() => {
+  const takePhoto = useCallback(() => {
     if (photoCount < 4) {
-    capturePhoto();
-    setCountdown(10);
-    setPhotoCount((prevCount) => prevCount + 1);
+      capturePhoto();
+      setCountdown(10);
+      setPhotoCount((prevCount) => prevCount + 1);
     }
-}, [photoCount]);
+  }, [photoCount]);
 
-useEffect(() => {
+  useEffect(() => {
     if (showModal) {
-    const modalTimer = setTimeout(() => setShowModal(false), 3000);
-    return () => clearTimeout(modalTimer);
+      const modalTimer = setTimeout(() => setShowModal(false), 3000);
+      return () => clearTimeout(modalTimer);
     }
 
     if (countdown > 0 && photoCount < 4) {
-    const timer = setTimeout(() => setCountdown((prev) => prev - 1), 1000);
-    return () => clearTimeout(timer);
+      const timer = setTimeout(() => setCountdown((prev) => prev - 1), 1000);
+      return () => clearTimeout(timer);
     } else if (countdown === 0 && photoCount < 4) {
-    takePhoto();
+      takePhoto();
     }
-}, [countdown, photoCount, showModal, takePhoto]);
+  }, [countdown, photoCount, showModal, takePhoto]);
 
-const capturePhoto = () => {
+  const capturePhoto = () => {
     if (webcamRef.current) {
-    const imageSrc = webcamRef.current.getScreenshot();
-    if (imageSrc) {
+      const imageSrc = webcamRef.current.getScreenshot();
+      if (imageSrc) {
         const imageBlob = base64ToBlob(imageSrc);
         setCapturedImages((prevImages) => [...prevImages, imageBlob]);
+      }
     }
-    }
-};
+  };
 
-// 개선된 이미지 로딩 대기 함수
-const waitForImagesToLoad = (element) => {
+  // 개선된 이미지 로딩 대기 함수
+  const waitForImagesToLoad = (element) => {
     const images = element.querySelectorAll("img");
     const promises = Array.from(images).map((img) => {
-    if (img.complete && img.naturalHeight !== 0) {
+      if (img.complete && img.naturalHeight !== 0) {
         return Promise.resolve();
-    }
-    return new Promise((resolve) => {
+      }
+      return new Promise((resolve) => {
         const timeout = setTimeout(() => {
-        console.warn('Image load timeout:', img.src);
-        resolve();
+          console.warn('Image load timeout:', img.src);
+          resolve();
         }, 5000); // 5초 타임아웃
         
         img.onload = () => {
-        clearTimeout(timeout);
-        resolve();
+          clearTimeout(timeout);
+          resolve();
         };
         img.onerror = () => {
-        clearTimeout(timeout);
-        console.error('Image load error:', img.src);
-        resolve();
+          clearTimeout(timeout);
+          console.error('Image load error:', img.src);
+          resolve();
         };
-    });
+      });
     });
     return Promise.all(promises);
-};
+  };
 
-// 직접 캔버스에 그려서 정확한 결과물 생성
-const captureResultZoneAsBlob = useCallback(async () => {
+  // 직접 캔버스에 그려서 정확한 결과물 생성
+  const captureResultZoneAsBlob = useCallback(async () => {
     if (!resultZoneRef.current || capturedImageUrls.length !== 4) {
-    console.error('Result zone ref is null or images not ready');
-    return null;
+      console.error('Result zone ref is null or images not ready');
+      return null;
     }
 
     try {
-    console.log('Starting manual canvas creation...');
-    
-    // 결과 영역 크기 (CSS에서 정의된 크기)
-    const canvasWidth = 590;
-    const canvasHeight = 879;
-    
-    // 캔버스 생성
-    const canvas = document.createElement('canvas');
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
-    const ctx = canvas.getContext('2d');
-    
-    // 프레임 이미지 미리 로드 (그리기는 나중에)
-    const frameImg = new Image();
-    frameImg.crossOrigin = 'anonymous';
-    
-    await new Promise((resolve, reject) => {
+      console.log('Starting manual canvas creation...');
+      
+      // 결과 영역 크기 (CSS에서 정의된 크기)
+      const canvasWidth = 590;
+      const canvasHeight = 879;
+      
+      // 캔버스 생성
+      const scale = 2;
+      const canvas = document.createElement('canvas');
+      canvas.width = canvasWidth * scale;
+      canvas.height = canvasHeight * scale;
+      const ctx = canvas.getContext('2d');
+
+      // 모든 그리기 작업 전에 스케일 조정
+      ctx.scale(scale, scale);
+        
+      // 프레임 이미지 미리 로드 (그리기는 나중에)
+      const frameImg = new Image();
+      frameImg.crossOrigin = 'anonymous';
+      
+      await new Promise((resolve, reject) => {
         frameImg.onload = resolve;
         frameImg.onerror = reject;
         frameImg.src = frameImages[frame];
-    });
-    
-    // 각 캡처된 이미지를 먼저 그리기
-    const positions = [
+      });
+      
+      // 각 캡처된 이미지를 먼저 그리기
+      const positions = [
         { x: 23, y: 45, width: 267, height: 369 }, // photo1
         { x: 300, y: 45, width: 269, height: 369 }, // photo2
         { x: 23, y: 465, width: 269, height: 369 }, // photo3
@@ -156,6 +160,7 @@ const captureResultZoneAsBlob = useCallback(async () => {
     ];
     
     for (let i = 0; i < capturedImageUrls.length; i++) {
+
         const img = new Image();
         img.crossOrigin = 'anonymous';
         
@@ -163,6 +168,7 @@ const captureResultZoneAsBlob = useCallback(async () => {
         img.onload = resolve;
         img.onerror = reject;
         img.src = capturedImageUrls[i];
+
         });
         
         const pos = positions[i];
@@ -276,7 +282,12 @@ useEffect(() => {
             console.error('저장 중 오류 : ', error);
         }
         setTimeout(() => {
-            navigate('/Email');
+            const imageUrl = URL.createObjectURL(resultBlob);
+            navigate('/Email', { state: {
+                                    previewImageUrl: imageUrl,
+                                    frameSize: 'size2'
+                                }
+            });
         }, 1000);
         } else {
         console.error('Failed to capture result zone');
@@ -312,6 +323,7 @@ return (
             <p className="PictureSize2-Photo-countdown" style={{ visibility: "hidden" }}>0</p>
         )}
         <Webcam
+
             audio={false}
             ref={webcamRef}
             screenshotFormat="image/jpeg"

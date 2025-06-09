@@ -3,8 +3,6 @@ import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 import { useEffect, useState } from "react";
 import "./Gallery.css";
 
-import "./Gallery.css";
-
 const Gallery = () => {
   const navigate = useNavigate();
   const [imageUrls, setImageUrls] = useState([]);
@@ -35,38 +33,42 @@ const Gallery = () => {
 
     fetchImages();
   }, []);
-    return (
-      <div className="gallery-background">
-        <div className="gallery-header">
-          <img
-            src="images/backBtn.png"
-            alt="Back"
-            className="backBtn"
-            onClick={() => navigate("/")}
-          />
-          <img
-            src="images/galleryLogo.png"
-            alt="GalleryLogo"
-            className="galleryLogo"
-          />
-        </div>
 
-        <div className="gallery-content">
-          {imageUrls.length === 0 ? (
-            <p>이미지를 불러오는 중입니다...</p>
-          ) : (
-            imageUrls.map((url, index) => (
+  const handleBackClick = () => {
+    navigate("/");
+  };
+
+  return (
+    <div className="gallery-background">
+      <div className="select-header">
+        <button onClick={handleBackClick} className="backBtn">
+          &lt; Back
+        </button>
+        <img
+          src="images/galleryLogo.png"
+          alt="GalleryLogo"
+          className="galleryLogo"
+        />
+      </div>
+
+      <div className="gallery-content">
+        {imageUrls.length === 0 ? (
+          <p></p>
+        ) : (
+          imageUrls.map((url, index) => (
+            <div className="gallery-item-wrapper" key={index}>
+              <div className="sticker"></div>
               <img
-                key={index}
                 src={url}
                 alt={`Gallery Image ${index + 1}`}
                 className="gallery-image"
               />
-            ))
-          )}
-        </div>
+            </div>
+          ))
+        )}
       </div>
-    );
-  };
-  export default Gallery;
-  
+    </div>
+  );
+};
+
+export default Gallery;

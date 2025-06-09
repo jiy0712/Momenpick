@@ -132,10 +132,14 @@ const captureResultZoneAsBlob = useCallback(async () => {
     const canvasHeight = 881;
     
     // 캔버스 생성
+    const scale = 2;
     const canvas = document.createElement('canvas');
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
+    canvas.width = canvasWidth * scale;
+    canvas.height = canvasHeight * scale;
     const ctx = canvas.getContext('2d');
+
+    // 모든 그리기 작업 전에 스케일 조정
+    ctx.scale(scale, scale);
     
     // 프레임 이미지 미리 로드 (그리기는 나중에)
     const frameImg = new Image();
@@ -276,7 +280,12 @@ useEffect(() => {
             console.error('저장 중 오류 : ', error);
         }
         setTimeout(() => {
-            navigate('/Email');
+            const imageUrl = URL.createObjectURL(resultBlob);
+            navigate('/Email', { state: {
+                                    previewImageUrl: imageUrl,
+                                    frameSize: 'size1'
+                                }
+            });
         }, 1000);
         } else {
         console.error('Failed to capture result zone');
@@ -319,13 +328,13 @@ return (
             mirrored
         />
         {frame.startsWith("teacher") && photoCount < 4 && (
-            <img
-            src={poseImages[frame][photoCount]}
-            alt={`${frame} 포즈 ${photoCount + 1}`}
-            className="PictureSize1-teacherPose"
-            crossOrigin="anonymous"
-            />
-        )}
+  <img
+    src={poseImages[frame][photoCount]}
+    alt={`${frame} 포즈 ${photoCount + 1}`}
+    className={`PictureSize1-teacherPose ${frame === "teacher1" ? "teacher1-special" : ""}`}
+    crossOrigin="anonymous"
+  />
+)}
         </div>
 
         <div className="PictureSize1-resultZone" ref={resultZoneRef}>

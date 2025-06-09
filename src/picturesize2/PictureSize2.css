@@ -134,9 +134,9 @@
 .PictureSize2-photo1 {
     position: absolute;
     width: 267px;
-    height: 369px;
+    height: 373px;
     object-fit: cover;
-    top: 45px;
+    top: 44px;
     left: 23px;
     z-index: 5;
 }
@@ -145,9 +145,9 @@
 .PictureSize2-photo2 {
     position: absolute;
     width: 269px;
-    height: 369px;
+    height: 373px;
     object-fit: cover;
-    top: 45px;
+    top: 44px;
     left: 300px;
     z-index: 5;
 }
@@ -156,9 +156,9 @@
 .PictureSize2-photo3 {
     position: absolute;
     width: 269px;
-    height: 369px;
+    height: 373px;
     object-fit: cover;
-    top: 465px;
+    top: 463px;
     left: 23px;
     z-index: 5;
 }
@@ -167,9 +167,9 @@
 .PictureSize2-photo4 {
     position: absolute;
     width: 269px;
-    height: 369px;
+    height: 373px;
     object-fit: cover;
-    top: 465px;
+    top: 463px;
     left: 300px;
     z-index: 5;
 }

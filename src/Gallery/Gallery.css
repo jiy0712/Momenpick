@@ -1,26 +1,49 @@
 .gallery-background {
-    background-image: url('/public/images/galleryBg.png'); /* Replace with your image path */
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100vh;
-}
-  
-.gallery-background img {
-    position: absolute;
+  background-image: url('/public/images/galleryBg.png');
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.gallery-header{
-    display: flex;
-    align-items: center;
+.select-header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.galleryLogo {
-    position: absolute;
-    top: 150px;
-    left: 50%;
-    transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
-    text-align: center;
-    width: 462px;
-    height: 158px;
+.gallery-content {
+  margin-top: 380px;
+  padding-left: 258px;
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 84px;
+  padding-top: 20px;
+  background-image: url('/public/images/galleryBg.png'); /* 스크롤에도 배경 유지 */
+  background-repeat: repeat;
+}
+
+.gallery-item-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.gallery-image {
+  height: 570px;
+}
+
+.sticker {
+  position: absolute;
+  left: 50%;
+  top: -15px;
+  transform: translateX(-50%);
+  width: 74px;
+  height: 27px;
+  background-color: rgba(255, 255, 255, 0.5);
+  pointer-events: none;
 }
